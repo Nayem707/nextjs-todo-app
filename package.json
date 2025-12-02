@@ -1,0 +1,46 @@
+{
+  "name": "nextjs-todo-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint src/ --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "type-check": "echo 'No TypeScript in this project'",
+    "clean": "rm -rf .next out dist",
+    "dev:full": "concurrently \"npm run dev\" \"npm run db:studio\"",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio --port 3001",
+    "db:push": "drizzle-kit push",
+    "db:drop": "drizzle-kit drop",
+    "db:seed": "node scripts/seed.js",
+    "health": "curl -f http://localhost:3000/api/health || exit 1"
+  },
+  "dependencies": {
+    "lucide-react": "^0.555.0",
+    "next": "16.0.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "drizzle-orm": "^0.36.1",
+    "postgres": "^3.4.4",
+    "swr": "^2.3.0",
+    "clsx": "^2.1.1",
+    "class-variance-authority": "^0.7.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "concurrently": "^9.2.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.6",
+    "prettier": "^3.7.3",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4",
+    "drizzle-kit": "^0.28.1",
+    "@types/node": "^22.8.7"
+  }
+}
