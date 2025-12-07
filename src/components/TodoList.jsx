@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Filter, CheckCircle2, Clock, List, Sparkles } from 'lucide-react';
 
 const FILTER_OPTIONS = [
-  { key: 'all', label: 'All Tasks', icon: List, color: 'blue' },
+  { key: 'all', label: 'All Tasks', icon: List, color: 'amber' },
   { key: 'active', label: 'Active', icon: Clock, color: 'amber' },
   { key: 'completed', label: 'Completed', icon: CheckCircle2, color: 'green' },
 ];
@@ -50,18 +50,18 @@ export default function TodoList({ todos, onTodoChanged }) {
   };
 
   return (
-    <Card className="border-0 bg-white/80 shadow-lg backdrop-blur-sm dark:bg-gray-800/80">
+    <Card className="border border-gray-200 shadow-md">
       <CardContent className="space-y-6 p-6">
         {/* Progress Bar */}
         {stats.total > 0 && (
-          <div className="rounded-lg border border-gray-200 px-8 py-4 pt-4 dark:border-gray-900">
+          <div className="rounded-lg border border-gray-200 px-8 py-4 pt-4">
             <div className="mb-2 flex items-center justify-between text-sm">
               <span className="text-gray-600 dark:text-gray-400">Progress</span>
               <span className="text-gray-600 dark:text-gray-400">
                 {Math.round((stats.completed / stats.total) * 100)}%
               </span>
             </div>
-            <div className="h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+            <div className="h-2 w-full rounded-full bg-gray-200">
               <div
                 className="h-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-500 ease-out"
                 style={{ width: `${(stats.completed / stats.total) * 100}%` }}
@@ -83,7 +83,7 @@ export default function TodoList({ todos, onTodoChanged }) {
 
           <div className="flex items-center gap-2">
             <Filter className="h-4 w-4 text-gray-400" />
-            <div className="flex gap-1 rounded-lg bg-gray-100 p-1 dark:bg-gray-700">
+            <div className="flex gap-1 rounded-lg bg-gray-100 p-1 text-gray-500">
               {FILTER_OPTIONS.map((option) => {
                 const Icon = option.icon;
                 const isActive = filter === option.key;
@@ -93,10 +93,10 @@ export default function TodoList({ todos, onTodoChanged }) {
                     onClick={() => setFilter(option.key)}
                     variant="ghost"
                     size="sm"
-                    className={`h-auto px-3 py-2 text-xs text-white transition-all duration-200 ${
+                    className={`h-auto px-3 py-2 text-sm transition-all duration-200 ${
                       isActive
-                        ? `bg-${option.color}-500 text-white hover:bg-${option.color}-600 shadow-sm`
-                        : 'hover:bg-gray-200 dark:hover:bg-gray-600'
+                        ? `bg-${option.color}-500 hover:bg-${option.color}-600 shadow-sm`
+                        : 'hover:bg-gray-300'
                     } `}
                   >
                     <Icon className="mr-1.5 h-3 w-3" />
@@ -110,12 +110,12 @@ export default function TodoList({ todos, onTodoChanged }) {
 
         {/* Todo Items or Empty State */}
         {filteredTodos.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 text-center">
+          <div className="flex flex-col items-center justify-center border border-dashed border-gray-300 py-16 text-center">
             <div className="mb-6 flex items-center justify-center">
               {getEmptyStateIcon()}
             </div>
             <div className="space-y-3">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-xl font-semibold text-gray-500">
                 {filter === 'all' ? 'Ready to get organized?' : 'All clear!'}
               </h3>
               <p className="mx-auto max-w-md text-base leading-relaxed text-gray-600 dark:text-gray-400">

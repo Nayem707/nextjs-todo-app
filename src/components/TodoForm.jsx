@@ -54,28 +54,26 @@ export default function TodoForm({ onTodoAdded }) {
   return (
     <div className="space-y-3">
       <form onSubmit={handleSubmit} className="flex gap-3">
-        <div className="flex-1 space-y-1">
+        <div className="flex-1 items-center space-y-1">
           <Input
             type="text"
             placeholder="What needs to be done?"
             value={title}
             onChange={handleInputChange}
             disabled={isSubmitting}
-            className={`transition-all duration-200 ${
+            className={`h-10 w-full rounded-md bg-amber-50 px-2 transition-all duration-200 ${
               error
                 ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                 : 'focus:border-blue-500 focus:ring-blue-200'
             }`}
             maxLength={100}
           />
-          {error && (
-            <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
-          )}
+          {error && <p className="text-sm text-red-600">{error}</p>}
         </div>
         <Button
           type="submit"
           disabled={isSubmitting || !title.trim()}
-          className="border-0 bg-gradient-to-r from-blue-500 to-blue-600 px-6 text-white shadow-lg transition-all duration-200 hover:from-blue-600 hover:to-blue-700 hover:shadow-xl"
+          className="rounded-2xl border border-gray-200 bg-gradient-to-r from-blue-500 to-blue-600 px-6 text-white shadow-md transition-all duration-200 hover:from-blue-600 hover:to-blue-700 hover:shadow-lg"
         >
           {isSubmitting ? (
             <>

@@ -2,9 +2,10 @@
 
 import { useMemo } from 'react';
 import { getTodos } from '@/lib/actions';
+
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
-import ThemeToggle from './ThemeToggle';
+
 import ErrorBoundary from './ErrorBoundary';
 import { Card, CardContent } from '@/components/ui/card';
 import { CheckSquare2, Loader2, AlertTriangle } from 'lucide-react';
@@ -75,34 +76,41 @@ export default function TodoApp() {
               </p>
             </div>
           </div>
-          <ThemeToggle />
         </header>
 
         {/* Stats Cards */}
         {todoStats.total > 0 && (
           <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-4">
-            <Card className="border-0 bg-gradient-to-r from-blue-500 to-blue-600 text-white">
+            <Card className="border-0 bg-gradient-to-r from-blue-400 to-blue-500 text-white">
               <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold">{todoStats.total}</div>
-                <div className="text-sm text-blue-100">Total Tasks</div>
+                <h3 className="text-2xl font-bold text-white">
+                  {todoStats.total}
+                </h3>
+                <p className="text-sm text-blue-100">Total Tasks</p>
               </CardContent>
             </Card>
             <Card className="border-0 bg-gradient-to-r from-amber-500 to-orange-500 text-white">
               <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold">{todoStats.active}</div>
-                <div className="text-sm text-amber-100">Active</div>
+                <h3 className="text-2xl font-bold text-white">
+                  {todoStats.active}
+                </h3>
+                <p className="text-sm text-amber-100">Active</p>
               </CardContent>
             </Card>
             <Card className="border-0 bg-gradient-to-r from-green-500 to-emerald-500 text-white">
               <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold">{todoStats.completed}</div>
-                <div className="text-sm text-green-100">Completed</div>
+                <h3 className="text-2xl font-bold text-white">
+                  {todoStats.completed}
+                </h3>
+                <p className="text-sm text-green-100">Completed</p>
               </CardContent>
             </Card>
-            <Card className="border-0 bg-gradient-to-r from-green-500 to-emerald-500 text-white">
+            <Card className="border-0 bg-gradient-to-r from-blue-500 to-blue-600 text-white">
               <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold">{todoStats.completed}</div>
-                <div className="text-sm text-green-100">Completed</div>
+                <h3 className="text-2xl font-bold text-white">
+                  {todoStats.completed}
+                </h3>
+                <p className="text-sm text-green-100">Completed</p>
               </CardContent>
             </Card>
           </div>
@@ -110,11 +118,9 @@ export default function TodoApp() {
 
         <div className="grid gap-6">
           {/* Add Todo Form */}
-          <Card className="border-0 bg-white/80 shadow-lg backdrop-blur-sm dark:bg-gray-800/80">
+          <Card className="rounded-2xl border border-gray-200 shadow-md">
             <CardContent className="p-6">
-              <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
-                Add New Task
-              </h2>
+              <h2 className="mb-4 text-lg font-semibold">Add New Task</h2>
               <TodoForm onTodoAdded={handleTodoChanged} />
             </CardContent>
           </Card>
@@ -122,7 +128,7 @@ export default function TodoApp() {
           {/* Todo List */}
           <ErrorBoundary>
             {isLoading ? (
-              <Card className="border-0 bg-white/80 shadow-lg backdrop-blur-sm dark:bg-gray-800/80">
+              <Card className="rounded-2xl border border-gray-200 shadow-md">
                 <CardContent className="p-8 text-center">
                   <Loader2 className="mx-auto mb-4 h-8 w-8 animate-spin text-blue-500" />
                   <p className="text-gray-600 dark:text-gray-400">Loading...</p>

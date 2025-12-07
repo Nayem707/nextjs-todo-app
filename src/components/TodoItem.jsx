@@ -87,10 +87,8 @@ export default function TodoItem({ todo, onTodoChanged }) {
   return (
     <div
       className={cn(
-        'group flex items-center gap-4 rounded-xl border bg-white p-4 backdrop-blur-sm transition-all duration-200 hover:bg-white/80 hover:shadow-md dark:bg-gray-800/60 dark:hover:bg-gray-800/80',
-        todo.completed
-          ? 'border-green-200 bg-green-50/60 dark:border-green-800 dark:bg-green-900/20'
-          : 'border-gray-200 dark:border-gray-700',
+        'group flex items-center gap-4 rounded-lg border border-gray-200 p-4 transition-all duration-200',
+        todo.completed ? 'border-green-200 bg-green-50/60' : 'border-gray-200',
         isHovered && 'scale-[1.02] shadow-lg'
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -104,7 +102,7 @@ export default function TodoItem({ todo, onTodoChanged }) {
           'flex h-6 w-6 items-center justify-center rounded-full border-2 transition-all duration-200 hover:scale-110',
           todo.completed
             ? 'border-green-500 bg-green-600 text-white shadow-lg'
-            : 'border border-gray-300 bg-gray-600 hover:border-green-400 hover:bg-green-100 dark:border-gray-500 dark:hover:bg-green-900',
+            : 'border border-gray-300 hover:border-green-400 hover:bg-green-100',
           isPending && 'animate-pulse'
         )}
       >
@@ -138,7 +136,7 @@ export default function TodoItem({ todo, onTodoChanged }) {
                 'text-sm leading-relaxed font-medium transition-all duration-200',
                 todo.completed
                   ? 'text-gray-600 line-through dark:text-gray-400'
-                  : 'text-gray-900 dark:text-white'
+                  : 'text-gray-900'
               )}
             >
               {todo.title}
@@ -176,7 +174,7 @@ export default function TodoItem({ todo, onTodoChanged }) {
                 editTitle.trim() === todo.title
               }
               size="sm"
-              className="h-10 w-10 border-0 bg-green-500 p-0 text-white shadow-md hover:bg-green-600"
+              className="h-10 w-10 border-0 bg-green-500 p-0 shadow-md hover:bg-green-600"
             >
               {isPending ? (
                 <Loader2 className="h-10 w-10 animate-spin" />
@@ -189,7 +187,7 @@ export default function TodoItem({ todo, onTodoChanged }) {
               disabled={isPending}
               variant="ghost"
               size="sm"
-              className="h-10 w-10 p-0 text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="h-10 w-10 p-0 text-red-400 hover:bg-gray-100"
             >
               <X className="h-10 w-10" />
             </Button>
@@ -201,7 +199,7 @@ export default function TodoItem({ todo, onTodoChanged }) {
               disabled={isPending || todo.completed}
               variant="ghost"
               size="sm"
-              className="h-10 w-10 p-0 text-white transition-colors hover:bg-blue-100 hover:text-blue-600 dark:hover:bg-blue-900/30"
+              className="h-10 w-10 p-0 transition-colors hover:bg-blue-100 hover:text-blue-600"
             >
               <Edit2 className="h-10 w-10" />
             </Button>
@@ -210,7 +208,7 @@ export default function TodoItem({ todo, onTodoChanged }) {
               disabled={isPending}
               variant="ghost"
               size="sm"
-              className="h-10 w-10 p-0 text-white transition-colors hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/30"
+              className="h-10 w-10 p-0 transition-colors hover:bg-red-100 hover:text-red-600"
             >
               {isPending ? (
                 <Loader2 className="h-10 w-10 animate-spin" />
