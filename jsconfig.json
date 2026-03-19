@@ -2,7 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/db/*": ["./db/*"]
     }
-  }
+  },
+  "include": ["src/**/*", "db/**/*"],
+  "exclude": ["node_modules"]
 }
