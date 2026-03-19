@@ -1,5 +1,6 @@
-import TodoApp from '@/components/TodoApp';
+import { redirect } from 'next/navigation';
 
 export default function HomePage() {
-  return <TodoApp />;
+  // Redirect to projects page (main dashboard)
+  redirect('/projects');
 }
